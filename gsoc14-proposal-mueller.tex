@@ -1,0 +1,120 @@
+%This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+%International License. To view a copy of this license, visit
+%http://creativecommons.org/licenses/by-sa/4.0/.
+%
+\documentclass[a4paper]{IEEEtran}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{microtype}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage[pdftex]{graphicx}
+\usepackage{siunitx}
+\usepackage{xspace}
+\usepackage{listings}
+\lstset{language=C++,inputencoding=utf8,
+%basicstyle=\footnotesize,
+breaklines=true,breakatwhitespace=true,tabsize=4,numbers=left }
+\newcommand{\gr}{GNU\,Radio\xspace}
+\newcommand{\gsoc}{Google\,Summer\,of\,Code\xspace}
+\newcommand{\grbench}{\texttt{gr-benchmark}\xspace}
+\author{Marcus Müller,~BSc. \\[1.2em]%
+{\scriptsize \texttt{marcus@hostalia.de}\\%
+\texttt{funkylab} on freenode.org}\\[1.2em]%
+%
+{\footnotesize Karlsruhe, Germany\\Student at the Karlsruhe Institute of Technology}}
+\title{Performance Measurement Toolbox for \gr}
+\usepackage[final=true]{hyperref}
+\hypersetup{
+	pdfauthor = {Marcus Müller},
+	pdftitle = {Google Summer of Code 2014 proposal: Performance Measurement Toolbox for \gr},
+	pdfsubject = {Performance Measurement Toolbox for \gr},
+%	hidelinks = {true}
+}
+\IEEEspecialpapernotice{\gsoc 2014}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\gr has become one of the most popular frameworks for development of
+experimental wireless transceiver systems, especially in the research
+community. Research and Development however are in need of extensive metrics of
+such systems. A very common task, therefore, is variation of \gr flow graph
+parameters and collecting values determined by running the system, including
+transceiver characteristics like bit error rate benchmarking, but there is
+rising need in the digital signal processing community to gather software
+performance data.
+
+This document proproses a \gsoc project to create a unified, distributed and
+versatile tool to do benchmarking of signal processing applications as a whole
+and for performance analysis of their components.
+\end{abstract}
+
+\section{Background}
+\gr has been part of numerous research projects on wireless transmission
+systems, including development of modulation schemes, medium access control
+strategies and is in the process of getting a increasingly comprehensive
+channel coding framework\cite{grfec}.
+
+With the creation of \grbench, steps were taken to profile the
+execution of \gr applications as well as components on different computing
+platforms. However, this is limited to let the benchmark run on the local
+computer and gather key data for analysis and potential upload to a central
+server\cite{grbenchmark}.
+
+For the development of complex transceiver systems, this covers but an aspect
+of the overall desirable benchmarking tools:
+
+One typical benchmark is the performance of such a system is the bit error rate (BER) 
+curve over varying SNR conditions. While there are plenty options to gather data from 
+\gr flow graphs and generate such statistics from them, there is a distinct lack of tools
+that enables researchers and developers to run extensive benchmarks in an easy, reproducible,
+and comfortably analyzable ways. 
+
+Furthermore, benchmarking a complex simulation can take quite some computation
+time. It is highly desirable that benchmarks can be automatically distributed to remote
+systems, the results being gathered on a central node. This has to be done by a 
+system that \emph{guarantees} that results are properly labeled, archived, the parameters 
+documented and stored in a way that enables visualization as much as sharing and 
+analysis using standard tools.
+
+The main objective of \grbench is to profile the computational performance of different implementation
+of algorithms and mathematical base operation, especially for the VOLK library\cite{volk};
+it implements a method to upload profiling data to the central \url{http://stats.gnuradio.org} server for 
+analysis by the VOLK community.
+Obviously, it is desirable that when developing performance-critical code one is able to test performance
+on several machines while coding is still in progress, and not just when code is \textit{out in the wild}; 
+that's basically the same reason \gr encourages developers to use the tightly integrated unit testing tools
+when developing in and out of tree modules.
+
+This brings up the need for a centralized dispatcher mechanism that distributes the execution of benchmarks to 
+different machines according to rules that either govern the execution of each benchmark on each machine for 
+computational profiling and testing purposes or the minimization of the execution time of a benchmark suite for processing 
+performance benchmarking.
+
+\section{Proposed Project}
+
+\subsection{Extension of \grbench}
+
+So far, \grbench is tailored to the need of the VOLK community to benchmark specific implementations of
+mathematical routines on different architectures.
+
+To make it more useful for the development
+
+\subsection{Dispatcher Infrastructure}
+
+
+
+\subsection{Benchmark Design Suite}
+
+\section{Deliverables}
+
+\section{Schedule}
+
+\begin{IEEEbiography}[{\includegraphics[width=1in]{portrait_square.png}}]{Marcus Müller}
+\end{IEEEbiography}
+
+\bibliographystyle{IEEEtran}
+\bibliography{IEEEabrv,bibliography}
+\end{document}
