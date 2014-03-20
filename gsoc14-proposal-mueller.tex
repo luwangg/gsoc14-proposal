@@ -110,9 +110,6 @@ often. To measure the performance of kernels, it therefore seems reasonable to
 compare the time spent on the kernel with the total computation time of an
 application employing that respective kernel.
 
-To make it more useful for the development of transceiver systems, the
-\texttt{gr-controlport} oriented architecture needs to be generalized.
-
 \subsubsection*{Signal Processing Focus} As a very common task is the simulation
 of a transceiver system under different environments (SNR, Frequency Offset,
 Interference, Timing misbehavior). \grbench should be
@@ -212,7 +209,9 @@ This will enable the user to specify \textsl{start}, \textsl{stop}, and a number
 \textsl{steps} of each parameter in a dedicated input window listing all user-specified
 variables, as well as the desired number of \textsl{repetitions} per run.
 These settings along with the flow graph should be exported to a \emph{plan} that can be
-dispatched.
+dispatched. Since graphical sinks do not make much sense in remotely executed benchmarks,
+integration of the GUI toolkit environments into that generate option is currently not 
+planned.
 
 The generated benchmarks should be exported in dispatcher-loadable plans. 
 
@@ -331,6 +330,12 @@ for \LaTeX{} import, or publish it (in the case of performance data) to an onlin
 This schedule is rather detailed; I honestly expect it to change in the
 coordination period.
 \vfill
+
+Currently I'm employed on a 9 hours per week basis, but the schedule should
+leave me with enough flexibility to do \gsoc and that in parallel. Further
+commitments can be reduced, even eliminated, to ensure reaching of weekly goals.
+
+This schedule already includes the long weekends I intend to take.
 
 \begin{tabular}{m{10ex}m{2.5in}}
 April 22 \newline May 18&
