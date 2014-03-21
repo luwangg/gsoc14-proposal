@@ -147,6 +147,11 @@ in an easy-to-use framework (fig.~\ref{fig:pushpull}).
 distribution. From:
 \url{http://zguide.zeromq.org/page:all\#Divide-and-Conquer}} \end{figure}
 
+Since there are several attractive alternatives to \zeromq, such as the more
+python-centered and deployment focused \texttt{execnet}\cite{execnet}, choosing
+the right framework is not inherently trivial, and the decision should be one
+of the initial tasks during framework development.
+
 The dispatcher architecture must be somewhat failure tolerant: Benchmarking
 results should be stored locally on the nodes, so that in case of
 infrastructure failure (network outage, dispatcher crash, \dots) results are
@@ -363,10 +368,9 @@ May 19\newline May 24 &
 May 26\newline May 31&
 Infrastructure I
 \begin{itemize}
-\item \zeromq dispatcher
-\item \zeromq running agent
-\item wrapping tasks \& results (XML?)
-\item result gathering
+\item choose right RPC framework (\zeromq? \texttt{execnet}? \dots)
+\item benchmark dispatcher
+\item benchmark running agent
 \end{itemize}\\\cline{2-2}
 June 2\newline June 5&
 Integration I
@@ -378,8 +382,9 @@ Integration I
 June 10\newline June 14 & 
 Infrastructure II
 \begin{itemize}
+\item wrapping tasks \& results (XML?)
+\item result gathering
 \item result storage
-\item Automated task distribution
 \end{itemize}\\\cline{2-2}
 June 17\newline June 21 &
 Infrastructure III
